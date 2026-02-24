@@ -1,0 +1,125 @@
+:root {
+    --bg: #0f172a;          /* fundo escuro */
+    --card: #1e293b;        /* cartões */
+    --accent: #f1f5f9;      /* texto principal */
+    --muted: #94a3b8;       /* texto secundário */
+    --primary: #6366f1;     /* roxo vibrante */
+    --secondary: #06b6d4;   /* azul turquesa */
+    --radius: 14px;
+    --shadow: 0 8px 20px rgba(0,0,0,0.6);
+    font-family: 'Inter', sans-serif;
+  }
+  
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--accent);
+  }
+  
+  .topbar {
+    background: linear-gradient(90deg, #1e293b, #0f172a); /* gradiente escuro */
+    color: #fff;
+    padding: 20px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+  }
+  
+  .brand {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  
+  .menu a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 24px;
+    font-weight: 600;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  
+  .menu a:hover {
+    opacity: 0.85;
+    transform: scale(1.05);
+  }
+  
+  
+  .container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  
+  .category {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 28px;
+    box-shadow: var(--shadow);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  
+  .category:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.8);
+  }
+  
+  .category h2 {
+    margin-top: 0;
+    color: var(--primary);
+    font-size: 1.3rem;
+    border-bottom: 3px solid var(--secondary);
+    padding-bottom: 8px;
+  }
+  
+  .links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .links li {
+    margin: 16px 0;
+  }
+  
+  .links a {
+    text-decoration: none;
+    color: var(--accent);
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 6px;
+    transition: color 0.2s;
+  }
+  
+  .links a:hover {
+    color: var(--secondary);
+  }
+  
+  .links code {
+    display: block;
+    background: #0f172a;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: var(--muted);
+    border-left: 4px solid var(--primary);
+    transition: background 0.2s;
+  }
+  
+  .links code:hover {
+    background: #1e293b;
+  }
+  
+  .footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  
