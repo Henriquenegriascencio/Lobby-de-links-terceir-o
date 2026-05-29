@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIDADE POLO</title>
+    <style>
+        /* Configurações Gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff; /* Fundo Branco */
+            color: #333333;
+        }
+
+        /* Topbar Azul Escuro */
+        .topbar {
+            background-color: #0B2545; /* Azul Escuro */
+            color: #ffffff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .topbar .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .topbar nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+
+        .topbar nav a:hover {
+            color: #8da9c4;
+        }
+
+        /* Container Principal */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Carrossel de Imagens */
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            margin-bottom: 40px;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .carousel-inner {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Botões do Carrossel */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(11, 37, 69, 0.7);
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .carousel-btn:hover {
+            background-color: rgba(11, 37, 69, 0.9);
+        }
+
+        .prev { left: 15px; }
+        .next { right: 15px; }
+
+        /* Divs de Texto (Seções) */
+        .content-section {
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .content-section h2 {
+            color: #0B2545;
+            margin-bottom: 15px;
+            font-size: 2rem;
+            border-bottom: 2px solid #EEF4F8;
+            padding-bottom: 10px;
+        }
+
+        .grid-textos {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card-texto {
+            flex: 1;
+            min-width: 280px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-left: 5px solid #0B2545;
+            border-radius: 4px;
+        }
+
+        /* Seção do Google Maps */
+        .maps-section {
+            margin-bottom: 40px;
+        }
+
+        .maps-section h2 {
+            color: #0B2545;
+            margin-bottom: 15px;
+        }
+
+        .map-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Rodapé bem simples */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f1f1f1;
+            color: #666;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="topbar">
+        <div class="logo">UNIDADE POLO C E EF M</div>
+        <nav>
+
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <section class="carousel">
+            <div class="carousel-inner" id="carouselInner">
+                <div class="slide"><img src="Captura de tela 2026-05-29 083433.png" alt="Slide 1"></div>
+                <div class="slide"><img src="WhatsApp Image 2026-05-29 at 8.13.44 AM.jpeg" alt="Slide 2"></div>
+                <div class="slide"><img src="exibirFoto.jpg" alt="Slide 3"></div>
+            </div>
+            <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
+        </section>
+
+        <section class="content-section">
+            <h2>Sobre</h2>
+            <div class="grid-textos">
+                <div class="card-texto">
+                    <h3></h3>
+                    <p>Ensino Médio de manhâ e Ensino fundamental de Tarde</p>
+                </div>
+                <div class="card-texto">
+                    <h3></h3>
+                    <p>Curso de IA e Desenvolvedor de Sistemas Integrado</p>
+                </div>
+                <div class="card-texto">
+                    <h3></h3>
+                    <p>Contruindo um futuro profissional</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="maps-section">
+            <h2>Onde Estamos</h2>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/place/Col%C3%A9gio+Estadual+Unidade+Polo/@-23.4096729,-51.4452724,19.11z/data=!4m15!1m8!3m7!1s0x94eca3ee804754a1:0x65d2467b467d10c7!2sR.+Papagaio,+179+-+Centro,+Arapongas+-+PR,+86701-380!3b1!8m2!3d-23.4076234!4d-51.4461941!16s%2Fg%2F11f3nhlq9h!3m5!1s0x94eca1470b2e6297:0x24daadc0958b933c!8m2!3d-23.4097176!4d-51.4451088!16s%2Fg%2F11cn94ldmc?entry=ttu&g_ep=EgoyMDI2MDUyNi4wIKXMDSoASAFQAw%3D%3D" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Unidade Polo</p>
+        <li><a href="inicial.html">Acesse meu portifolio</a></li>
+    </footer>
+
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const carouselInner = document.getElementById('carouselInner');
+
+        function moveSlide(direction) {
+            currentSlide += direction;
+
+            if (currentSlide >= totalSlides) {
+                currentSlide = 0;
+            } else if (currentSlide < 0) {
+                currentSlide = totalSlides - 1;
+            }
+
+            const offset = -currentSlide * 100;
+            carouselInner.style.transform = `translateX(${offset}%)`;
+        }
+
+        // Carrossel passa sozinho a cada 5 segundos
+        setInterval(() => {
+            moveSlide(1);
+        }, 5000);
+    </script>
+</body>
+</html>
