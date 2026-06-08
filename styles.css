@@ -1,0 +1,124 @@
+:root{
+    --blue-dark:#0b3d91;
+    --yellow:#ffd400;
+    --white:#ffffff;
+    --muted:#f5f7fb;
+    --max-width:1200px;
+    --radius:12px;
+    --transition:300ms ease;
+    --topbar-height:72px;
+    --card-shadow:0 8px 24px rgba(11,61,145,0.06);
+    --accent-text:#334155;
+    --glow-color: #ffd400;
+  }
+  
+  /* Reset e tipografia */
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;background:var(--muted);color:var(--blue-dark);-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  
+  /* Topbar fixa com dropdown */
+  .topbar{position:fixed;left:0;right:0;top:0;height:var(--topbar-height);background:linear-gradient(90deg,var(--blue-dark),#08306f);color:var(--white);display:flex;align-items:center;z-index:120;box-shadow:0 8px 30px rgba(11,61,145,0.12);padding:0 20px}
+  .topbar .inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:var(--max-width);margin:0 auto}
+  .brand{display:flex;align-items:center;gap:14px}
+  .brand .logo{width:56px;height:56px;border-radius:10px;background:var(--white);display:flex;align-items:center;justify-content:center;color:var(--blue-dark);font-weight:800;font-size:18px;box-shadow:0 6px 18px rgba(0,0,0,0.08)}
+  .brand h1{font-size:16px;line-height:1;color:var(--white);font-weight:700}
+  
+  /* Navegação principal */
+  nav.primary{display:flex;gap:12px;align-items:center;position:relative}
+  nav.primary > a, .nav-item{color:rgba(255,255,255,0.95);padding:8px 12px;border-radius:8px;font-weight:600;transition:background var(--transition)}
+  nav.primary > a:hover, .nav-item:hover, nav.primary > a:focus, .nav-item:focus{background:rgba(255,255,255,0.08);outline:none}
+  
+  /* Dropdown Ensinos */
+  .dropdown{position:relative}
+  .dropdown-toggle{display:inline-flex;align-items:center;gap:8px;cursor:pointer}
+  .dropdown-menu{
+    position:absolute;top:calc(100% + 10px);left:0;min-width:220px;background:var(--white);color:var(--blue-dark);
+    border-radius:10px;padding:8px;box-shadow:0 12px 30px rgba(3,10,30,0.12);opacity:0;transform:translateY(6px);pointer-events:none;transition:opacity 220ms var(--transition),transform 220ms var(--transition);
+  }
+  .dropdown:hover .dropdown-menu, .dropdown:focus-within .dropdown-menu{opacity:1;transform:translateY(0);pointer-events:auto}
+  
+  /* Itens do dropdown */
+  .dropdown-menu a{display:block;padding:10px 12px;border-radius:8px;color:var(--blue-dark);font-weight:700;margin:4px 0;transition:background 180ms}
+  .dropdown-menu a:hover, .dropdown-menu a:focus{background:#f3f6ff;outline:none}
+  
+  /* Efeito de brilho para links de páginas separadas */
+  .glow{
+    position:relative;
+    transition:transform 220ms ease;
+    box-shadow:0 6px 18px rgba(0,0,0,0.08);
+    border-radius:8px;
+  }
+  .glow::after{
+    content:"";
+    position:absolute;inset:-2px;border-radius:10px;
+    background:linear-gradient(90deg, rgba(255,212,0,0.0), rgba(255,212,0,0.18), rgba(255,212,0,0.0));
+    filter:blur(8px);
+    opacity:0;
+    transform:scale(0.95);
+    transition:opacity 420ms ease, transform 420ms ease;
+    pointer-events:none;
+  }
+  .glow:hover::after, .glow:focus::after{
+    opacity:1;transform:scale(1);
+    animation:glowPulse 1600ms ease-in-out infinite;
+  }
+  
+  /* Pulse animation for subtle shine */
+  @keyframes glowPulse{
+    0%{filter:blur(6px);opacity:0.85}
+    50%{filter:blur(12px);opacity:1}
+    100%{filter:blur(6px);opacity:0.85}
+  }
+  
+  /* Container principal com offset para topbar fixa */
+  main.container{max-width:var(--max-width);margin:calc(var(--topbar-height) + 18px) auto 40px;padding:0 20px}
+  
+  /* Hero / Carrossel */
+  .hero{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--white);box-shadow:var(--card-shadow)}
+  .carousel{position:relative;width:100%;height:calc(100vh - var(--topbar-height) - 140px);min-height:480px;max-height:920px;background:#ddd;overflow:hidden}
+  .carousel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.03);transition:opacity 700ms ease,transform 900ms ease}
+  .carousel img.active{opacity:1;transform:scale(1)}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(11,61,145,0.18) 0%, rgba(11,61,145,0.12) 30%, rgba(0,0,0,0.18) 100%);display:flex;align-items:center;justify-content:center;padding:28px}
+  .hero-content{text-align:center;color:var(--white);max-width:980px;padding:18px;border-radius:12px;animation:fadeInUp 900ms cubic-bezier(.2,.9,.3,1)}
+  .school-name{font-size:clamp(28px,6vw,64px);font-weight:900;letter-spacing:0.6px;margin-bottom:12px;text-shadow:0 10px 30px rgba(3,10,30,0.45)}
+  .school-sub{font-size:clamp(14px,1.6vw,18px);opacity:0.95;margin-bottom:18px}
+  .hero-cta{display:inline-flex;align-items:center;gap:12px;background:var(--yellow);color:var(--blue-dark);padding:14px 22px;border-radius:14px;font-weight:800;box-shadow:0 18px 40px rgba(13,37,92,0.12);transition:transform var(--transition)}
+  .hero-cta:hover,.hero-cta:focus{transform:translateY(-6px);box-shadow:0 26px 50px rgba(13,37,92,0.18);outline:none}
+  
+  /* Controls */
+  .controls{position:absolute;top:50%;left:12px;right:12px;display:flex;justify-content:space-between;transform:translateY(-50%);pointer-events:none}
+  .controls button{pointer-events:auto;background:rgba(0,0,0,0.45);border:none;color:#fff;padding:10px;border-radius:10px;cursor:pointer;backdrop-filter:blur(4px)}
+  .indicators{position:absolute;left:50%;transform:translateX(-50%);bottom:18px;display:flex;gap:8px}
+  .indicators button{width:12px;height:12px;border-radius:50%;border:none;background:rgba(255,255,255,0.6);cursor:pointer;transition:transform 220ms ease}
+  .indicators button.active{background:var(--yellow);transform:scale(1.15);box-shadow:0 6px 18px rgba(0,0,0,0.12)}
+  
+  /* Layout abaixo do hero */
+  .main{display:grid;grid-template-columns:1fr 360px;gap:24px;margin-top:22px}
+  .card{background:var(--white);padding:20px;border-radius:12px;box-shadow:var(--card-shadow)}
+  .about h2{color:var(--blue-dark);margin-bottom:10px}
+  .about p{line-height:1.6;color:var(--accent-text)}
+  
+  /* Section links */
+  .section-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+  .section-card{flex:1 1 220px;background:linear-gradient(180deg,var(--white),#fbfbfb);padding:16px;border-radius:10px;box-shadow:0 8px 20px rgba(11,61,145,0.04)}
+  .section-card h4{margin-bottom:8px;color:var(--blue-dark)}
+  .section-card p{color:var(--accent-text);font-size:14px;margin-bottom:12px}
+  .section-card a{display:inline-block;background:var(--blue-dark);color:var(--white);padding:10px 14px;border-radius:8px;font-weight:700}
+  
+  /* Map */
+  .map-section{margin-top:22px}
+  .container-map{width:100%;height:420px;border-radius:12px;overflow:hidden;box-shadow:var(--card-shadow)}
+  .container-map iframe{display:block;border:0;width:100%;height:100%}
+  
+  /* Footer */
+  footer{margin-top:18px;text-align:center;color:#6b7280;padding:18px;font-size:14px}
+  
+  /* Animações */
+  @keyframes fadeInUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+  
+  /* Responsive */
+  @media (max-width:1000px){.main{grid-template-columns:1fr}.controls{display:none}.carousel{height:62vh;min-height:320px}}
+  @media (max-width:520px){.school-name{font-size:22px}.hero-cta{padding:12px 14px;font-size:14px}.container-map{height:260px}}
+  

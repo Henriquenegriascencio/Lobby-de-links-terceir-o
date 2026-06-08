@@ -1,296 +1,177 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNIDADE POLO</title>
-    <style>
- /* Configurações Globais - Tema Escuro */
- * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
-
-        body {
-            background-color: #0a1128; /* Azul Marinho Profundo */
-            color: #f2f8fe; /* Branco fosco/cinza claro para não agredir os olhos */
-            line-height: 1.6;
-        }
-
-        /* Topbar Premium */
-        .topbar {
-            background-color: #060b1a; /* Azul ainda mais escuro para contraste */
-            color: #ffffff;
-            padding: 0 40px;
-            height: 70px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 2px solid #f59e0b; /* Linha sutil em Amarelo Corporativo */
-        }
-
-        .topbar .logo {
-            font-size: 1.35rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            color: #ffffff;
-        }
-
-        .topbar nav {
-            display: flex;
-            gap: 30px;
-        }
-
-        .topbar nav a {
-            color: #e6ecf5;
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
-
-        .topbar nav a:hover {
-            color: #f59e0b; /* Destaque em Amarelo no Hover */
-        }
-
-        /* Container de Conteúdo */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        /* Carrossel Minimalista */
-        .carousel {
-            position: relative;
-            width: 100%;
-            height: 480px;
-            margin-bottom: 60px;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
-            border: 1px solid #1e293b;
-        }
-
-        .carousel-inner {
-            display: flex;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .slide {
-            min-width: 100%;
-            height: 100%;
-        }
-
-        .slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.85; /* Leve redução de brilho para harmonizar com o tema escuro */
-        }
-
-        /* Botões do Carrossel em Amarelo */
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: #f59e0b; /* Botão Amarelo */
-            color: #0a1128; /* Texto em Azul Escuro */
-            border: none;
-            width: 46px;
-            height: 46px;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            transition: all 0.2s ease;
-        }
-
-        .carousel-btn:hover {
-            background-color: #fbbf24; /* Amarelo um pouco mais claro no hover */
-            transform: translateY(-50%) scale(1.05);
-        }
-
-        .prev { left: 24px; }
-        .next { right: 24px; }
-
-        /* Títulos de Seção */
-        .section-title {
-            color: #ffffff; /* Branco Puro para títulos */
-            font-size: 2.25rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            margin-bottom: 32px;
-        }
-
-        /* Grid de Textos / Cards */
-        .grid-textos {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
-            margin-bottom: 60px;
-        }
-
-        .card-texto {
-            padding: 32px;
-            background-color: #111e38; /* Azul Marinho Médio para destacar do fundo */
-            border-radius: 12px;
-            border: 1px solid #1e293b;
-            border-left: 4px solid #f59e0b; /* Detalhe lateral em Amarelo */
-            transition: all 0.3s ease;
-        }
-
-        .card-texto:hover {
-            transform: translateY(-4px);
-            background-color: #162545;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
-        }
-
-        .card-texto h3 {
-            color: #f59e0b; /* Título do Card em Amarelo para hierarquia visual */
-            font-size: 1.25rem;
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-
-        .card-texto p {
-            color: #ffffff; /* Texto interno cinza claro super confortável */
-            font-size: 0.975rem;
-        }
-
-        /* Seção do Google Maps */
-        .map-container {
-            position: relative;
-            width: 100%;
-            height: 450px;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid #1e293b;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-        }
-
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-            filter: invert(90%) hue-rotate(180deg); /* Truque CSS para deixar o mapa nativo do Google em Dark Mode */
-        }
-
-        /* Rodapé */
-        footer {
-            text-align: center;
-            padding: 30px 20px;
-            background-color: #060b1a;
-            color: #ffffff;
-            font-size: 0.9rem;
-            border-top: 1px solid #1e293b;
-            margin-top: 60px;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>UNIDADE POLO C E EF M — Início</title>
+  <meta name="description" content="Página inicial da UNIDADE POLO C E EF M" />
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <header class="topbar" role="banner">
+    <div class="inner">
+      <div class="brand" aria-label="UNIDADE POLO C E EF M">
+        <div class="logo" aria-hidden="true">UPC</div>
+        <div>
+          <h1>UNIDADE POLO C E EF M</h1>
+          <div style="font-size:12px;opacity:.9">Educação, comunidade e futuro</div>
+        </div>
+      </div>
 
-    <header class="topbar">
-        <div class="logo">UNIDADE POLO C E EF M</div>
-        <nav>
+      <nav class="primary" role="navigation" aria-label="Navegação principal">
+        <a href="#sobre" class="nav-item">Sobre</a>
 
-        </nav>
-    </header>
+        <!-- Dropdown Ensinos -->
+        <div class="dropdown" role="menu" aria-label="Ensinos">
+          <div class="dropdown-toggle nav-item" tabindex="0" aria-haspopup="true" aria-expanded="false">Ensinos ▾</div>
+          <div class="dropdown-menu" role="menu" aria-label="Submenu Ensinos">
+            <a class="glow" href="ensino-fundamental.html" role="menuitem">Ensino Fundamental</a>
+            <a class="glow" href="ensino-medio.html" role="menuitem">Ensino Médio</a>
+            <a class="glow" href="ensino-profissionalizante.html" role="menuitem">Profissionalizante</a>
+          </div>
+        </div>
 
-    <div class="container">
+        <a href="#contato" class="nav-item">Contato</a>
+      </nav>
+    </div>
+  </header>
 
-        <section class="carousel">
-            <div class="carousel-inner" id="carouselInner">
-                <div class="slide"><img src="Captura de tela 2026-05-29 083433.png" alt="Slide 1"></div>
-                <div class="slide"><img src="WhatsApp Image 2026-05-29 at 8.13.44 AM.jpeg" alt="Slide 2"></div>
-                <div class="slide"><img src="exibirFoto.jpg" alt="Slide 3"></div>
-            </div>
-            <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
-            <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
-        </section>
+  <main class="container" role="main">
+    <!-- Hero / Carrossel -->
+    <section class="hero" aria-label="Carrossel principal">
+      <div class="carousel" id="carousel" tabindex="0" aria-roledescription="carousel" aria-label="Imagens da escola">
+        <img src="Captura de tela 2026-05-29 083433.png" alt="Fachada da escola" data-index="0" class="active" loading="lazy" />
+        <img src="exibirFoto.jpg" alt="Alunos em atividade" data-index="1" loading="lazy" />
+        <img src="WhatsApp Image 2026-05-29 at 8.13.43 AM.jpeg" alt="Projeto pedagógico" data-index="2" loading="lazy" />
 
-        <section class="content-section">
-            <h2>Sobre</h2>
-            <div class="grid-textos">
-                <div class="card-texto">
-                    <h3></h3>
-                    <p>Ensino Fundamental e Médio e Cursos integrados com o Ensino Médio</p>
-                </div>
-                <div class="card-texto">
-                    <h3></h3>
-                    <p>Curso de Aprendizagem de Inteligência Artificial</p>
-                </div>
-                <div class="card-texto">
-                    <h3></h3>
-                    <p>Curso de Desenvolvimento de Sistemas: Aprende Front e Back end, Banco de dados e Ciência de dados</p>
-                </div>
-                <div class="card-texto">
-                    <h3></h3>
-                    <p>Ensino Fundamental de tarde e Ensino Médio de manhã</p>
-                </div>
-                <div class="card-texto">
-                    <h3></h3>
-                    <p>Aprenda como usar e dominar a Inteligência Artificial para construir a sua futura carreira</p>
-                </div>
-                <div class="card-texto">
-                    <h3></h3>
-                    <p>Aprenda tudo sobre criação de sites e criação de app, app web e criação de banco de dados</p>
-                </div>  
-            </div>
-        </section>
+        <div class="hero-overlay">
+          <div class="hero-content" role="group" aria-label="Identificação da escola">
+            <div class="school-name">UNIDADE POLO C E EF M</div>
+            <div class="school-sub">Formação integral, inovação pedagógica e compromisso com a comunidade</div>
+            <a class="hero-cta" href="https://portfolio-do-criador.exemplo" target="_blank" rel="noopener noreferrer">Acessar Portfólio do Criador</a>
+          </div>
+        </div>
 
-        <section class="maps-section">
-            <h2>Onde Estamos</h2>
-            <div class="map-container">
-               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d847.5014465396948!2d-51.445262166669394!3d-23.409591884643962!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94eca1470b2e6297%3A0x24daadc0958b933c!2sCol%C3%A9gio%20Estadual%20Unidade%20Polo!5e0!3m2!1spt-BR!2sbr!4v1780496371029!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </section>
+        <div class="controls">
+          <button id="prev" aria-label="Anterior">&larr;</button>
+          <button id="next" aria-label="Próximo">&rarr;</button>
+        </div>
 
+        <div class="indicators" role="tablist" aria-label="Indicadores do carrossel">
+          <button data-slide="0" class="active" aria-label="Slide 1"></button>
+          <button data-slide="1" aria-label="Slide 2"></button>
+          <button data-slide="2" aria-label="Slide 3"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Conteúdo principal -->
+    <div class="main">
+      <section class="about card" id="sobre" aria-labelledby="sobre-title">
+        <h2 id="sobre-title">Sobre a UNIDADE POLO C E EF M</h2>
+        <p>UNIDADE POLO C E EF M é uma instituição comprometida com a formação integral dos estudantes, oferecendo um ambiente seguro, inclusivo e estimulante. Aliamos práticas pedagógicas modernas a projetos interdisciplinares que desenvolvem pensamento crítico, criatividade e competências socioemocionais.
+
+            Nossa missão é promover educação de qualidade, com respeito à diversidade e foco na preparação para os desafios do século XXI. A visão é ser referência regional em inovação pedagógica e formação cidadã, conectando família, escola e comunidade para gerar impacto social positivo.</p>
+
+        <div class="section-links" aria-label="Seções de ensino">
+          <div class="section-card">
+            <h4>Ensino Fundamental</h4>
+            <p>Formação básica com foco em alfabetização, letramento e desenvolvimento integral.</p>
+            <a class="glow" href="ensino-fundamental.html">Saiba mais</a>
+          </div>
+
+          <div class="section-card">
+            <h4>Ensino Médio</h4>
+            <p>Preparação para o ensino superior e para a vida, com ênfase em competências e projetos.</p>
+            <a class="glow" href="ensino-medio.html">Saiba mais</a>
+          </div>
+
+          <div class="section-card">
+            <h4>Profissionalizante</h4>
+            <p>Cursos técnicos e formação prática para inserção no mercado de trabalho.</p>
+            <a class="glow" href="ensino-profissionalizante.html">Saiba mais</a>
+          </div>
+        </div>
+      </section>
+
+      <aside class="aside">
+        <div class="card">
+          <div class="highlight" role="note">Matrículas abertas • Ensino Fundamental, Médio e Profissionalizante</div>
+          <div style="margin-bottom:12px"><strong>Endereço:</strong><br>R. Pavão, 831 - Centro, Arapongas - PR, 86700-215</div>
+          <div style="margin-bottom:16px"><strong>Contato:</strong><br>(43) 3274-4471 • aluno.escoladigital.pr.gov.br</div>
+        </div>
+      </aside>
     </div>
 
-    <footer>
-        <p>&copy; 2026 Unidade Polo</p>
-<p>Local: R. Pavão, 831 - Centro, Arapongas - PR, 86700-215</p>
-<p>Contato: aluno.escoladigital.pr.gov.br</p>
-<p>Fone: (43) 3274-4471</p>
-        <li><a href="inicial.html">Acesse meu portifolio</a></li>
+    <!-- Mapa -->
+    <section class="map-section card" aria-label="Localização da escola">
+      <div class="container-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1467.0825979412657!2d-51.444531705172096!3d-23.409988544066294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94eca1470b2e6297%3A0x24daadc0958b933c!2sCol%C3%A9gio%20Estadual%20Unidade%20Polo!5e0!3m2!1spt-BR!2sbr!4v1780925503413!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </section>
+
+    <footer id="contato" class="card" role="contentinfo">
+      <div style="max-width:var(--max-width);margin:0 auto;padding:8px 12px;color:#6b7280">© <span id="year"></span> UNIDADE POLO C E EF M — Todos os direitos reservados.</div>
     </footer>
+  </main>
 
+  <script>
+    (function(){
+      // Carrossel
+      const carousel = document.getElementById('carousel');
+      const slides = Array.from(carousel.querySelectorAll('img'));
+      const prevBtn = document.getElementById('prev');
+      const nextBtn = document.getElementById('next');
+      const indicators = Array.from(carousel.querySelectorAll('.indicators button'));
+      let current = 0;
+      let interval = null;
+      const AUTOPLAY_MS = 5000;
 
-    <script>
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const totalSlides = slides.length;
-        const carouselInner = document.getElementById('carouselInner');
+      function show(index){
+        slides.forEach((s,i)=> s.classList.toggle('active', i===index));
+        indicators.forEach((b,i)=> b.classList.toggle('active', i===index));
+        current = index;
+      }
+      function next(){ show((current+1)%slides.length) }
+      function prev(){ show((current-1+slides.length)%slides.length) }
 
-        function moveSlide(direction) {
-            currentSlide += direction;
+      nextBtn.addEventListener('click', next);
+      prevBtn.addEventListener('click', prev);
+      indicators.forEach(btn=> btn.addEventListener('click', ()=> show(Number(btn.dataset.slide))));
 
-            if (currentSlide >= totalSlides) {
-                currentSlide = 0;
-            } else if (currentSlide < 0) {
-                currentSlide = totalSlides - 1;
-            }
+      function startAutoplay(){ stopAutoplay(); interval = setInterval(next, AUTOPLAY_MS) }
+      function stopAutoplay(){ if(interval) clearInterval(interval); interval = null }
 
-            const offset = -currentSlide * 100;
-            carouselInner.style.transform = `translateX(${offset}%)`;
-        }
+      carousel.addEventListener('mouseenter', stopAutoplay);
+      carousel.addEventListener('mouseleave', startAutoplay);
+      carousel.addEventListener('focusin', stopAutoplay);
+      carousel.addEventListener('focusout', startAutoplay);
 
-        // Carrossel passa sozinho a cada 5 segundos
-        setInterval(() => {
-            moveSlide(1);
-        }, 5000);
-    </script>
+      carousel.addEventListener('keydown', (e)=>{ if(e.key==='ArrowRight') next(); if(e.key==='ArrowLeft') prev(); });
+
+      let startX=0;
+      carousel.addEventListener('touchstart', e=>{ startX = e.touches[0].clientX; stopAutoplay(); }, {passive:true});
+      carousel.addEventListener('touchend', e=>{ const dx = e.changedTouches[0].clientX - startX; if(Math.abs(dx)>40){ if(dx<0) next(); else prev(); } startAutoplay(); });
+
+      show(0); startAutoplay();
+      document.getElementById('year').textContent = new Date().getFullYear();
+      slides.forEach(img=>{ if('loading' in HTMLImageElement.prototype) img.loading='lazy' });
+
+      // Acessibilidade: permitir abrir dropdown com Enter/Space
+      const dropdownToggle = document.querySelector('.dropdown-toggle');
+      if(dropdownToggle){
+        dropdownToggle.addEventListener('keydown', (e)=>{
+          if(e.key === 'Enter' || e.key === ' '){
+            e.preventDefault();
+            const menu = dropdownToggle.nextElementSibling;
+            const expanded = dropdownToggle.getAttribute('aria-expanded') === 'true';
+            dropdownToggle.setAttribute('aria-expanded', String(!expanded));
+            if(!expanded){ menu.style.opacity = '1'; menu.style.transform = 'translateY(0)'; menu.style.pointerEvents = 'auto'; }
+            else { menu.style.opacity = ''; menu.style.transform = ''; menu.style.pointerEvents = ''; }
+          }
+        });
+      }
+    })();
+  </script>
 </body>
 </html>

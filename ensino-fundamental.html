@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ensino Fundamental — UNIDADE POLO C E EF M</title>
+  <meta name="description" content="Ensino Fundamental na UNIDADE POLO C E EF M" />
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Copie exatamente o header do index.html para manter consistência -->
+  <header class="topbar" role="banner">
+    <div class="inner">
+      <div class="brand" aria-label="UNIDADE POLO C E EF M">
+        <div class="logo" aria-hidden="true">UPC</div>
+        <div>
+          <h1>UNIDADE POLO C E EF M</h1>
+          <div style="font-size:12px;opacity:.9">Educação, comunidade e futuro</div>
+        </div>
+      </div>
+
+      <nav class="primary" role="navigation" aria-label="Navegação principal">
+        <a href="colegio.html" class="nav-item">Início</a>
+
+        <div class="dropdown" role="menu" aria-label="Ensinos">
+          <div class="dropdown-toggle nav-item" tabindex="0" aria-haspopup="true" aria-expanded="false">Ensinos ▾</div>
+          <div class="dropdown-menu" role="menu" aria-label="Submenu Ensinos">
+            <a class="glow" href="ensino-fundamental.html" role="menuitem">Ensino Fundamental</a>
+            <a class="glow" href="ensino-medio.html" role="menuitem">Ensino Médio</a>
+            <a class="glow" href="ensino-profissionalizante.html" role="menuitem">Profissionalizante</a>
+          </div>
+        </div>
+
+        <a href="colegio.html#contato" class="nav-item">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" role="main" style="margin-top:calc(var(--topbar-height) + 18px);">
+    <section class="card">
+      <h2>Ensino Fundamental</h2>
+      <p><strong>Faixa etária:</strong> 6 a 14 anos.</p>
+      <p><strong>Período:</strong> Verspertino</p>
+      <p>O Ensino Fundamental da UNIDADE POLO C E EF M prioriza a alfabetização plena, o desenvolvimento do raciocínio lógico e a formação socioemocional. Trabalhamos com projetos interdisciplinares, avaliação formativa e atividades que estimulam leitura, escrita e matemática.</p>
+
+      <h3 style="margin-top:12px">Diferenciais</h3>
+      <ul>
+        <li>Turmas reduzidas e acompanhamento individualizado</li>
+        <li>Laboratórios e atividades práticas</li>
+        <li>Projetos de leitura e feiras de ciências</li>
+      </ul>
+
+      <h3 style="margin-top:12px">Matrículas</h3>
+      <p>Para informações sobre matrícula e documentos necessários, entre em contato pelo telefone ou e-mail na página inicial.</p>
+
+      <a class="hero-cta" href="index.html" style="margin-top:14px;display:inline-block">Voltar ao Início</a>
+    </section>
+  </main>
+
+  <footer style="margin-top:18px;text-align:center;padding:18px;color:#6b7280">© <span id="year-fund"></span> UNIDADE POLO C E EF M</footer>
+
+  <script>document.getElementById('year-fund').textContent = new Date().getFullYear();</script>
+</body>
+</html>

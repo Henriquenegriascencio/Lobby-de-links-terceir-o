@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ensino Médio — UNIDADE POLO C E EF M</title>
+  <meta name="description" content="Ensino Médio na UNIDADE POLO C E EF M — preparação para o ensino superior e para a vida profissional." />
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Topbar (copiar exatamente do index.html para consistência) -->
+  <header class="topbar" role="banner">
+    <div class="inner">
+      <div class="brand" aria-label="UNIDADE POLO C E EF M">
+        <div class="logo" aria-hidden="true">UPC</div>
+        <div>
+          <h1>UNIDADE POLO C E EF M</h1>
+          <div style="font-size:12px;opacity:.9">Educação, comunidade e futuro</div>
+        </div>
+      </div>
+
+      <nav class="primary" role="navigation" aria-label="Navegação principal">
+        <a href="colegio.html" class="nav-item">Início</a>
+
+        <div class="dropdown" role="menu" aria-label="Ensinos">
+          <div class="dropdown-toggle nav-item" tabindex="0" aria-haspopup="true" aria-expanded="false">Ensinos ▾</div>
+          <div class="dropdown-menu" role="menu" aria-label="Submenu Ensinos">
+            <a class="glow" href="ensino-fundamental.html" role="menuitem">Ensino Fundamental</a>
+            <a class="glow" href="ensino-medio.html" role="menuitem">Ensino Médio</a>
+            <a class="glow" href="ensino-profissionalizante.html" role="menuitem">Profissionalizante</a>
+          </div>
+        </div>
+
+        <a href="colegio.html#contato" class="nav-item">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Conteúdo principal -->
+  <main class="container" role="main" style="margin-top:calc(var(--topbar-height) + 18px);">
+    <section class="card">
+      <h2>Ensino Médio</h2>
+      <p><strong>Período:</strong> Matutino e Verspertino</p>
+
+      <p><strong>Objetivo:</strong> Preparar estudantes para o ensino superior, para o mercado de trabalho e para o exercício da cidadania.</p>
+
+      <p>
+        O Ensino Médio da <strong>UNIDADE POLO C E EF M</strong> alia um currículo sólido à oferta de itinerários formativos,
+        projetos interdisciplinares e atividades práticas. Nosso foco é desenvolver competências cognitivas, socioemocionais e
+        técnicas, promovendo autonomia, pensamento crítico e protagonismo estudantil.
+      </p>
+
+      <h3 style="margin-top:12px">Estrutura curricular</h3>
+      <ul>
+        <li>Base Nacional Comum Curricular (BNCC) integrada a itinerários formativos.</li>
+        <li>Componentes obrigatórios e eletivos que permitem aprofundamento por áreas de interesse.</li>
+        <li>Projetos de pesquisa, empreendedorismo e iniciação científica.</li>
+      </ul>
+
+      <h3 style="margin-top:12px">Itinerários formativos e ênfases</h3>
+      <p>
+        Oferecemos itinerários em áreas como Ciências da Natureza e Tecnologia, Linguagens e Humanidades, e Formação Técnica.
+        Os estudantes podem escolher percursos que aproximem teoria e prática, com oficinas, laboratórios e parcerias locais.
+      </p>
+
+      <h3 style="margin-top:12px">Apoio à preparação para vestibulares e ENEM</h3>
+      <ul>
+        <li>Oficinas de redação e simulados periódicos.</li>
+        <li>Plantões de dúvidas e monitorias com professores especializados.</li>
+        <li>Orientação vocacional e acompanhamento de trajetórias acadêmicas.</li>
+      </ul>
+
+      <h3 style="margin-top:12px">Atividades complementares</h3>
+      <p>
+        Monitorias, clubes de ciência, feiras de empreendedorismo, projetos sociais e parcerias com instituições para estágios e
+        visitas técnicas.
+      </p>
+
+      <h3 style="margin-top:12px">Avaliação e acompanhamento</h3>
+      <p>
+        Avaliação contínua com ênfase formativa, feedback individualizado e planos de recuperação personalizados quando necessário.
+      </p>
+
+      <h3 style="margin-top:12px">Matrículas e informações</h3>
+      <p>
+        Para informações sobre matrículas, documentação e cronograma, entre em contato pelo telefone ou e-mail disponíveis na página inicial.
+      </p>
+
+      <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap">
+        <a class="hero-cta" href="colegio.html">Voltar ao Início</a>
+        <a class="hero-cta" href="ensino-profissionalizante.html" style="background:var(--blue-dark);color:var(--white)">Ver Profissionalizante</a>
+      </div>
+    </section>
+  </main>
+
+  <footer style="margin-top:18px;text-align:center;padding:18px;color:#6b7280">
+    © <span id="year-medio"></span> UNIDADE POLO C E EF M — Todos os direitos reservados.
+  </footer>
+
+  <script>
+    // Atualiza ano no rodapé desta página
+    document.getElementById('year-medio').textContent = new Date().getFullYear();
+
+    // Acessibilidade: permitir abrir dropdown com Enter/Space (mesma lógica do index)
+    (function(){
+      const dropdownToggle = document.querySelector('.dropdown-toggle');
+      if(dropdownToggle){
+        dropdownToggle.addEventListener('keydown', (e)=>{
+          if(e.key === 'Enter' || e.key === ' '){
+            e.preventDefault();
+            const menu = dropdownToggle.nextElementSibling;
+            const expanded = dropdownToggle.getAttribute('aria-expanded') === 'true';
+            dropdownToggle.setAttribute('aria-expanded', String(!expanded));
+            if(!expanded){
+              menu.style.opacity = '1';
+              menu.style.transform = 'translateY(0)';
+              menu.style.pointerEvents = 'auto';
+            } else {
+              menu.style.opacity = '';
+              menu.style.transform = '';
+              menu.style.pointerEvents = '';
+            }
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
